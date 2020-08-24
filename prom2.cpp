@@ -20,6 +20,7 @@ double promt2 = 0;// creamos una variable para almacenar el promdeio total 2 con
 double promt3 = 0;// creamos una variable para almacenar el promdeio total 3 con un valor nulo.
 double promt4 = 0;// creamos una variable para almacenar el promdeio total 4 con un valor nulo.
 int num = 0; //creamos una variable para la cantidad de estudiantes por archivo.
+int numsalones= 0 ; // creamos variable para la cantidad de salones.
 double promedios_individuales(const char* archivocvv) //creamos una funcion prom que recive una variable que almacena el archivo.
 {
 	ifstream archivo(archivocvv); //leemos el archivo y lo almacenamos en una variable.
@@ -89,31 +90,44 @@ double calculo_promediot(){ //esta funcion nos acumulará los promedios en nueva
 }
 
 double promediototal(){ //esta funcion, por ultimo, divide el valor de los promedios acumulados en 4.
-    promt1=promt1/4;
-    promt2=promt2/4;
-    promt3=promt3/4;
-    promt4=promt4/4;
+    promt1=promt1/numsalones;
+    promt2=promt2/numsalones;
+    promt3=promt3/numsalones;
+    promt4=promt4/numsalones;
     return promt1 and promt2 and promt3 and promt4;// regresamos las variables.
+}
+
+double incrementoSalones (){
+    numsalones= numsalones + 1;
+    return numsalones;
 }
 
 int main()
 {
 	promedios_individuales("Promedio5Estud.csv"); //llamamos a la funcion prom antes creada ingresando el nombre del archivo a leer.
+    incrementoSalones ();
     cout << "El promedio #1 de las notas es: " << prom1 << " " << prom2 << " " << prom3 << " " << prom4 << endl; // imprimimos un mensaje con los promedios del primer archivo..
     calculo_promediot();
     volvernulo();
+
     promedios_individuales("Promedio10Estud.csv"); //llamamos a la funcion prom antes creada ingresando el nombre del archivo a leer.
+    incrementoSalones ();
     cout << "El promedio #2 de las notas es: " << prom1 << " " << prom2 << " " << prom3 << " " << prom4 << endl; // imprimimos un mensaje con los promedios del segundo archivo.
     calculo_promediot();
     volvernulo();
+
     promedios_individuales("Promedio15Estud.csv");//llamamos a la funcion prom antes creada ingresando el nombre del archivo a leer.
+    incrementoSalones ();
     cout << "El promedio #3 de las notas es: " << prom1 << " " << prom2 << " " << prom3 << " " << prom4 << endl; // imprimimos un mensaje con los promedios del tercer archivo..
     calculo_promediot();
     volvernulo();
+
     promedios_individuales("Promedio20Estud.csv"); //llamamos a la funcion prom antes creada ingresando el nombre del archivo a leer.
+    incrementoSalones ();
     cout << "El promedio #4 de las notas es: " << prom1 << " " << prom2 << " " << prom3 << " " << prom4 << endl; // imprimimos un mensaje con los promedios del ultimo archivo..
 	calculo_promediot();
     volvernulo();
+    
     promediototal();
     cout << "El promedio total de las notas es: " << promt1 << " " << promt2 << " " << promt3 << " " << promt4 << endl; // imprimimos un mensaje con los promedios totales.
 }
